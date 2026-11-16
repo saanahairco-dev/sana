@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sana: Premium, Within Reach.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+@font-face{
+font-family:'Evolventa';
+src:url('https://cdn.jsdelivr.net/gh/evolventa/evolventa@master/woff/Evolventa-Regular.woff') format('woff');
+font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+font-family:'Evolventa';
+src:url('https://cdn.jsdelivr.net/gh/evolventa/evolventa@master/woff/Evolventa-Oblique.woff') format('woff');
+font-weight:400; font-style:italic; font-display:swap;
+}
+@font-face{
+font-family:'Evolventa';
+src:url('https://cdn.jsdelivr.net/gh/evolventa/evolventa@master/woff/Evolventa-Bold.woff') format('woff');
+font-weight:700; font-style:normal; font-display:swap;
+}
+@font-face{
+font-family:'Evolventa';
+src:url('https://cdn.jsdelivr.net/gh/evolventa/evolventa@master/woff/Evolventa-BoldOblique.woff') format('woff');
+font-weight:700; font-style:italic; font-display:swap;
+}
+:root{
+--white:#FFFFFF;
+--brown:#8A6350;
+--brown-soft:#6B4E3C;
+--brown-muted:#8A7565;
+--line:#E7DCD1;
+--fill:#F7F1EA;
+--olive:#43431E;
+--olive-deep:#34331A;
+--burgundy:#4B1220;
+--burgundy-deep:#350D17;
+--burgundy-tint:#F6E8E8;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+margin:0;
+background:var(--white);
+color:var(--brown);
+font-family:'Evolventa', Arial, sans-serif;
+font-weight:400;
+-webkit-font-smoothing:antialiased;
+position:relative;
+}
+body::before{
+content:'';
+position:fixed;
+inset:0;
+background-image:url('data:image/jpeg;base64,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');
+background-size:cover;
+background-position:center;
+filter:blur(7px);
+transform:scale(1.05);
+z-index:-1;
+}
+body::after{
+content:'';
+position:fixed;
+inset:0;
+background:rgba(255,255,255,0.05);
+z-index:-1;
+}
+a{color:inherit;}
+.wrap{ max-width:900px; margin:0 auto; padding:0 28px; }
+.heading{
+font-family:'Roca Two','Fraunces',Georgia,serif;
+font-style:normal;
+font-weight:700;
+letter-spacing:-0.01em;
+}
+@media (prefers-reduced-motion: reduce){
+html{scroll-behavior:auto;}
+*{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+}
+a:focus-visible, summary:focus-visible{
+outline:2px solid var(--brown);
+outline-offset:3px;
+border-radius:4px;
+}
+.hero{ text-align:center; padding:110px 0 70px; }
+.wordmark{
+font-size:clamp(38px, 8vw, 64px);
+letter-spacing:0.04em;
+line-height:1; margin:0; color:var(--brown);
+}
+.tagline{
+font-family:'Fraunces', Georgia, serif;
+font-style:italic; font-weight:400;
+font-size:clamp(19px, 2.8vw, 24px);
+color:var(--brown-soft); margin:18px 0 10px;
+}
+.positioning{
+max-width:480px; margin:0 auto; font-size:18px; line-height:1.6; color:var(--brown-muted);
+}
+.badges{
+display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:30px;
+}
+.badge{
+background:var(--olive); color:var(--white);
+padding:8px 18px; border-radius:999px; font-size:14px; letter-spacing:.02em;
+}
+.section{ padding:56px 0; border-top:1px solid var(--line); }
+.section-head{ text-align:center; margin-bottom:36px; }
+.section-eyebrow{
+text-transform:uppercase; letter-spacing:.16em; font-size:12px;
+color:var(--brown-muted); font-weight:600; margin:0 0 10px;
+}
+.section-title{
+font-size:clamp(26px, 4.2vw, 36px);
+margin:0; color:var(--brown);
+}
+.section-sub{
+max-width:480px; margin:12px auto 0; color:var(--brown-muted); font-size:16px; line-height:1.5;
+}
+.table-block{ margin-bottom:36px; }
+.table-title-row{
+display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap;
+gap:6px; margin-bottom:12px;
+}
+.table-title{ font-size:18px; color:var(--brown); margin:0; }
+.table-note{ font-size:13px; color:var(--brown-muted); margin:0; font-style:italic; }
+.table-card{
+background:var(--white);
+border-radius:26px;
+padding:6px 4px;
+box-shadow:0 24px 48px -32px rgba(75,18,32,0.35);
+overflow-x:auto; -webkit-overflow-scrolling:touch;
+}
+table{ border-collapse:collapse; width:100%; min-width:480px; font-size:15px; }
+thead th{
+text-align:right; font-weight:600; color:var(--burgundy);
+text-transform:uppercase; letter-spacing:.08em; font-size:12px;
+padding:18px 24px 14px; border-bottom:2px solid var(--burgundy); white-space:nowrap;
+font-family:'Fraunces',Georgia,serif;
+}
+thead th:first-child{ text-align:left; }
+tbody td{
+text-align:right; padding:15px 24px; color:var(--brown-soft);
+border-bottom:1px solid var(--line); white-space:nowrap;
+font-variant-numeric:tabular-nums;
+transition:background .15s ease;
+}
+tbody td:first-child{ text-align:left; font-weight:600; color:var(--brown); }
+tbody tr:last-child td{ border-bottom:none; }
+tbody tr:hover td{ background:var(--burgundy-tint); }
+.info-list{
+margin-top:32px;
+display:grid;
+grid-template-columns:repeat(2, 1fr);
+gap:14px;
+}
+.info-item{
+background:var(--olive-deep);
+border-radius:22px;
+padding:24px 26px;
+}
+.info-item h3{
+font-family:'Roca Two','Fraunces',Georgia,serif;
+font-weight:700; font-size:17px; margin:0 0 6px; color:var(--white);
+}
+.info-item p{ font-size:14px; line-height:1.5; color:#D9D6B8; margin:0; }
+@media (max-width:560px){ .info-list{ grid-template-columns:1fr; } }
+.accordion{ max-width:640px; margin:0 auto; }
+details{ border-bottom:1px solid var(--line); }
+details:last-child{ border-bottom:none; }
+summary{
+list-style:none; cursor:pointer; padding:18px 0;
+display:flex; align-items:center; justify-content:space-between;
+font-family:'Roca Two','Fraunces',Georgia,serif;
+font-weight:700; font-size:17px; color:var(--brown);
+}
+summary::-webkit-details-marker{ display:none; }
+.plus{ flex:0 0 auto; width:18px; height:18px; position:relative; margin-left:16px; }
+.plus::before, .plus::after{
+content:''; position:absolute; background:var(--brown);
+top:50%; left:50%; transform:translate(-50%,-50%);
+}
+.plus::before{ width:12px; height:1.5px; }
+.plus::after{ width:1.5px; height:12px; transition:opacity .15s ease; }
+details[open] > summary .plus::after{ opacity:0; }
+.accordion-body{ padding:0 0 20px; color:var(--brown-muted); font-size:15px; line-height:1.6; }
+.accordion-body p{ margin:0 0 8px; }
+.accordion-body p:last-child{ margin-bottom:0; }
+.cta{ text-align:center; }
+.cta-sub{ color:var(--brown-muted); font-size:16px; max-width:420px; margin:12px auto 30px; line-height:1.5; }
+.cta-buttons{ display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
+.btn{
+display:inline-flex; align-items:center; gap:9px;
+padding:13px 26px; border-radius:999px;
+font-family:'Roca Two','Fraunces',Georgia,serif;
+font-size:15px; font-weight:700;
+text-decoration:none; transition:opacity .15s ease; border:1px solid var(--brown);
+}
+.btn:hover{ opacity:.75; }
+.btn-primary{ background:var(--olive); color:var(--white); border-color:var(--olive); }
+.btn-secondary{ background:transparent; color:var(--brown); }
+.btn-olive-deep{ background:var(--olive-deep); color:var(--white); border-color:var(--olive-deep); }
+.btn svg{ width:16px; height:16px; }
+.panel{ background:var(--white); border-radius:26px; border-bottom:none; margin-bottom:16px;
+box-shadow:0 24px 48px -32px rgba(75,18,32,0.35); }
+.panel > summary{ padding:24px 28px; font-size:22px; }
+.panel-body{ padding:4px 22px 28px; }
+#menu{ border-top:none; padding-top:20px; }
+.details-block{ margin-bottom:44px; }
+.details-title{ text-align:center; margin:0 0 22px; }
+.sub-title{ font-size:22px; color:var(--brown); margin:36px 0 14px; text-align:center; }
+.sub-title.alt{ margin-top:32px; font-size:18px; }
+.callout{ background:var(--burgundy-tint); border-radius:22px; padding:22px 26px; text-align:center; margin-bottom:8px; }
+.callout h3{ margin:0 0 6px; font-size:19px; color:var(--burgundy); }
+.callout p{ margin:0; color:var(--brown-soft); font-size:15px; line-height:1.55; }
+.panel .section-head{ margin-bottom:24px; }
+.panel .table-card{ box-shadow:none; border:1px solid var(--line); }
+@media (max-width:560px){ .panel > summary{ padding:20px; } .panel-body{ padding:0 12px 22px; } }
+.order-intro{ text-align:center; margin-bottom:22px; max-width:520px; }
+#orderApp .card{
+background:var(--white);
+border-radius:26px;
+padding:28px 24px;
+margin-top:10px;
+box-shadow:0 24px 48px -32px rgba(75,18,32,0.35);
+}#orderApp .card:first-of-type{ margin-top:0; }#orderApp .card h2{
+font-family:'Fraunces', Georgia, serif;
+font-style:italic; font-weight:500;
+font-size:22px; color:var(--brown);
+margin:0 0 4px;
+}#orderApp .card .sub{ font-size:13px; color:var(--brown-muted); margin-bottom:18px; }#orderApp label{
+display:block;
+font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+color:var(--brown-muted); font-weight:700;
+margin:16px 0 6px;
+font-family:'Evolventa', Arial, sans-serif;
+}#orderApp label:first-of-type{ margin-top:0; }#orderApp input[type=text],#orderApp input[type=tel],#orderApp select,#orderApp textarea{
+width:100%;
+padding:13px 15px;
+border:1px solid var(--line);
+border-radius:12px;
+background:var(--fill);
+font-family:'Evolventa', Arial, sans-serif;
+font-size:15px;
+color:var(--brown);
+appearance:none;
+}#orderApp select{
+background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9'><path d='M1 1l6 6 6-6' stroke='%238A6350' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
+background-repeat:no-repeat;
+background-position:right 16px center;
+padding-right:40px;
+}#orderApp textarea{ resize:vertical; min-height:70px; }#orderApp .row2{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media (max-width:480px){ #orderApp .row2{ grid-template-columns:1fr; } }
+#orderApp .radio-group{ display:flex; gap:10px; margin-top:6px; flex-wrap:wrap; }#orderApp .radio-pill{
+flex:1; min-width:150px;
+border:1px solid var(--line);
+border-radius:999px;
+padding:11px 16px;
+text-align:center;
+font-size:13px;
+cursor:pointer;
+color:var(--brown-muted);
+transition:all .15s ease;
+}#orderApp .radio-pill input{ display:none; }#orderApp .radio-pill.active{
+background:var(--olive);
+color:var(--white);
+border-color:var(--olive);
+}#orderApp .summary{
+margin-top:22px;
+background:var(--white);
+border-radius:26px;
+padding:24px 24px 22px;
+box-shadow:0 24px 48px -32px rgba(75,18,32,0.35);
+}#orderApp .summary-eyebrow{
+text-transform:uppercase; letter-spacing:.14em; font-size:11px;
+color:var(--brown-muted); font-weight:700; margin:0 0 14px;
+}#orderApp .summary-row{
+display:flex; justify-content:space-between;
+font-size:14.5px; color:var(--brown-soft); padding:7px 0;
+border-bottom:1px solid var(--line);
+}#orderApp .summary-row.total{
+margin-top:4px; padding-top:14px; border-bottom:none;
+font-weight:700; color:var(--brown); font-size:16px;
+}#orderApp .summary-row .val{ font-variant-numeric:tabular-nums; font-weight:700; }#orderApp .deposit-highlight{
+margin-top:16px;
+background:var(--olive-deep);
+color:var(--white);
+border-radius:22px;
+padding:18px 22px;
+text-align:center;
+}#orderApp .deposit-highlight .amt{
+font-family:'Fraunces', Georgia, serif;
+font-style:italic; font-weight:600;
+font-size:28px;
+display:block;
+}#orderApp .deposit-highlight .lbl{ font-size:11px; letter-spacing:.12em; text-transform:uppercase; opacity:.85; }#orderApp .pay-info{
+margin-top:16px;
+font-size:13px; line-height:1.5;
+color:var(--brown-soft);
+background:var(--fill);
+border:1px dashed var(--line);
+border-radius:16px;
+padding:14px 16px;
+}#orderApp .pay-info b{ color:var(--brown); }#orderApp .submit-btn{
+display:flex; align-items:center; justify-content:center; gap:9px;
+width:100%;
+margin-top:22px;
+padding:15px;
+border:1px solid var(--olive-deep);
+border-radius:999px;
+background:var(--olive-deep);
+color:var(--white);
+font-family:'Fraunces', Georgia, serif;
+font-weight:700;
+font-size:15px;
+cursor:pointer;
+transition:opacity .15s ease;
+}#orderApp .submit-btn:hover{ opacity:.75; }#orderApp .submit-btn svg{ width:17px; height:17px; }#orderApp .helper-note{ text-align:center; font-size:12.5px; color:var(--brown-muted); margin-top:12px; }#orderApp .receipt-card{ text-align:left; }#orderApp .receipt-header{ text-align:center; margin-bottom:16px; }#orderApp .receipt-brand{ font-size:20px; color:var(--brown-muted); margin:0; letter-spacing:0.04em; }#orderApp .receipt-tag{ font-size:18px; font-weight:700; letter-spacing:.02em; text-transform:uppercase; color:var(--brown); margin:6px 0 0; }#orderApp .receipt-subwarning{ font-size:12px; font-weight:700; letter-spacing:.02em; color:var(--burgundy); margin:5px 0 0; }#orderApp .receipt-row{
+display:flex; justify-content:space-between; gap:12px;
+font-size:14px; color:var(--brown-soft); padding:6px 0;
+}#orderApp .receipt-row span:first-child{ color:var(--brown-muted); }#orderApp .receipt-row span:last-child{ font-weight:700; color:var(--brown); text-align:right; }#orderApp .receipt-divider{ height:1px; background:var(--line); margin:10px 0; }#orderApp .receipt-total{ font-size:16px; }#orderApp .receipt-total span:last-child{ color:var(--burgundy); }#orderApp .receipt-eta{ font-size:12px; line-height:1.5; color:var(--brown-soft); margin-top:12px; }#orderApp .receipt-eta b{ color:var(--brown); }#orderApp .receipt-note{ font-size:12px; line-height:1.5; color:var(--brown-muted); margin-top:10px; }#orderApp .receipt-note b{ color:var(--brown); }#orderApp .receipt-thanks{ text-align:center; font-family:'Fraunces',Georgia,serif; font-style:italic; color:var(--brown); margin-top:14px; font-size:15px; }
+#orderApp .card, #orderApp .summary{ box-shadow:none; border:1px solid var(--line); }
+#orderApp .card h2{ font-size:20px; }
+#orderApp .row2{ margin-top:16px; align-items:end; }
+#orderApp .row2 > div{ display:flex; flex-direction:column; justify-content:flex-end; }
+#orderApp #otherTextureField{ margin-top:16px; }
+#orderApp .radio-group{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+#orderApp .radio-group .radio-pill{
+margin:0; min-width:0; min-height:46px; display:flex; align-items:center; justify-content:center;
+text-transform:none; letter-spacing:0; font-weight:400; font-size:13px; line-height:1.2;
+}
+@media (max-width:360px){ #orderApp .radio-group{ grid-template-columns:1fr; } }
+footer{ text-align:center; padding:50px 28px 44px; }
+.footer-word{ font-size:24px; margin:0; color:var(--brown); }
+.footer-tag{ font-style:italic; color:var(--brown-muted); font-size:14px; margin:6px 0 4px; }
+.footer-loc{ color:var(--brown-muted); font-size:12px; letter-spacing:.06em; }
+@media (max-width:640px){
+.hero{ padding:80px 0 50px; }
+.section{ padding:44px 0; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+<div class="wrap">
+<h1 class="wordmark heading">SANA HAIR</h1>
+<p class="tagline">Premium, Within Reach.</p>
+<p class="positioning">Human hair, Vietnamese, honestly priced. For orders across Zambia and internationally.</p>
+<div class="badges">
+<span class="badge">Preorder &amp; In Stock</span>
+<span class="badge">Individuals &amp; Businesses</span>
+<span class="badge">HD &amp; Transparent Lace</span>
+</div>
+</div>
+</header>
+<section class="section" id="menu">
+<div class="wrap">
+<div class="details-block" id="details">
+<h2 class="section-title heading details-title">Details</h2>
+<div class="details-body">
+<div class="callout">
+<h3 class="heading">Free maintenance with every wig</h3>
+<p>When you order a wig from us, you get free maintenance. This includes, but is not limited to, revamping, steaming, cutting and styling.</p>
+</div>
+<div class="section-head">
+<h3 class="sub-title heading">Services &amp; customizations</h3>
+<p class="section-sub">Every wig can be tailored to your preference. Customizations start from a minimum of 350 ZMW, with the final cost subject to change according to complexity. We also customize wigs purchased elsewhere.</p>
+</div>
+<div class="info-list">
+<div class="info-item"><h3>Nigerian Hairline Ventilation</h3><p>A softer, denser hairline ventilation for a fuller, natural look.</p></div>
+<div class="info-item"><h3>Natural Hairline Ventilation</h3><p>A finer, sparser ventilation that mimics a natural hairline.</p></div>
+<div class="info-item"><h3>Bleaching of Knots</h3><p>Lightens the knots at the base for an undetectable, natural scalp appearance.</p></div>
+<div class="info-item"><h3>Coloring</h3><p>Custom color and tone changes to match your desired look.</p></div>
+<div class="info-item"><h3>Curling</h3><p>Curl patterns styled to your preferred size and texture.</p></div>
+<div class="info-item"><h3>Steam Styling</h3><p>Steam-set styling for lasting curls or waves with a natural finish.</p></div>
+<div class="info-item"><h3>Layers</h3><p>Custom layering cut to add movement and shape.</p></div>
+</div>
+<div class="section-head">
+<h3 class="sub-title heading">Terms &amp; Conditions</h3>
+</div>
+<div class="accordion">
+<details open>
+<summary>Preorder Basis<span class="plus"></span></summary>
+<div class="accordion-body"><p>Sana operates primarily on a preorder basis, with select items available in stock. Preorders are sourced once your deposit is received.</p></div>
+</details>
+<details>
+<summary>Payment<span class="plus"></span></summary>
+<div class="accordion-body">
+<p>A 50% deposit is required to place any preorder. The remaining 50% is due within 7 days of your wig arriving in Zambia.</p>
+<p>The 50% deposit applies to preorders only. Readily available wigs are paid for in full, unless otherwise agreed with us.</p>
+</div>
+</details>
+<details>
+<summary>Pricing<span class="plus"></span></summary>
+<div class="accordion-body">
+<p>Prices reflect human hair, Vietnamese, sourced and priced transparently. Non-straight and non-body-wave textures carry a 280 ZMW surcharge.</p>
+<p>Prices are quoted in Zambian Kwacha at the prevailing exchange rate and may adjust if that rate shifts significantly.</p>
+</div>
+</details>
+<details>
+<summary>Custom Colors<span class="plus"></span></summary>
+<div class="accordion-body"><p>Custom colors may differ slightly from the inspiration pictures you provide, especially images from Pinterest, TikTok and similar platforms, because lighting and filters used in photography change how colors appear.</p></div>
+</details>
+<details>
+<summary>Order Timeline<span class="plus"></span></summary>
+<div class="accordion-body"><p>Ordering takes 5 to 7 working days from the completion of your wig's manufacturing. Manufacturing normally takes 2 days, and wigs with custom colors or textures take 3 to 4 days. We keep you updated throughout.</p></div>
+</details>
+<details>
+<summary>Returns &amp; Exchanges<span class="plus"></span></summary>
+<div class="accordion-body"><p>Wigs are inspected for quality upon arrival. If yours arrives damaged and you're not happy with it, a return is accepted. In these cases, we offer an exchange for another in-stock wig of similar price, or a new order of a similar-priced wig. Wigs that have been installed, modified, or customized in any way no longer qualify for return.</p></div>
+</details>
+<details>
+<summary>Communication<span class="plus"></span></summary>
+<div class="accordion-body"><p>We communicate closely with clients on every detail of their wig, and offer consultations where needed to help you find the hair that best suits you. From the moment your order is placed to delivery, we keep you updated on shipping progress, transit locations, any delays, and estimated arrival times.</p></div>
+</details>
+</div>
+</div>
+</div>
+<details class="panel" id="prices">
+<summary>Price List<span class="plus"></span></summary>
+<div class="panel-body">
+<div class="section-head">
+<p class="section-sub">All prices in Zambian Kwacha (ZMW). Straight and body wave textures shown below. Manufacturing takes 2 days (3 to 4 for custom colors or textures), then ordering takes 5–7 working days.</p>
+</div>
+<div class="table-block">
+<div class="table-title-row">
+<h3 class="table-title heading">Standard Wigs: Straight / Body Wave</h3>
+<p class="table-note">+280 ZMW for other textures</p>
+</div>
+<div class="table-card">
+<table>
+<thead><tr><th>Length</th><th>HD 2×6</th><th>HD 4×4</th><th>HD 5×5</th><th>HD 6×6</th><th>HD 7×7</th><th>HD 13×4</th><th>HD 13×6</th></tr></thead>
+<tbody>
+<tr><td>14"</td><td>3,220</td><td>3,220</td><td>3,420</td><td>3,740</td><td>4,140</td><td>3,580</td><td>3,860</td></tr>
+<tr><td>16"</td><td>3,670</td><td>3,670</td><td>3,870</td><td>4,150</td><td>4,510</td><td>3,990</td><td>4,230</td></tr>
+<tr><td>18"</td><td>4,280</td><td>4,280</td><td>4,480</td><td>4,680</td><td>5,000</td><td>4,600</td><td>4,760</td></tr>
+<tr><td>20"</td><td>4,880</td><td>4,880</td><td>5,080</td><td>5,160</td><td>5,520</td><td>5,200</td><td>5,320</td></tr>
+<tr><td>22"</td><td>5,610</td><td>5,610</td><td>5,810</td><td>5,810</td><td>6,130</td><td>5,930</td><td>6,050</td></tr>
+<tr><td>24"</td><td>6,380</td><td>6,380</td><td>6,540</td><td>6,820</td><td>6,900</td><td>6,660</td><td>6,780</td></tr>
+<tr><td>26"</td><td>7,390</td><td>7,390</td><td>7,550</td><td>7,670</td><td>7,790</td><td>7,670</td><td>7,790</td></tr>
+<tr><td>28"</td><td>8,840</td><td>8,840</td><td>8,960</td><td>9,080</td><td>9,200</td><td>9,080</td><td>9,200</td></tr>
+<tr><td>30"</td><td>10,170</td><td>10,170</td><td>10,250</td><td>10,370</td><td>10,490</td><td>10,370</td><td>10,490</td></tr>
+<tr><td>32"</td><td>11,220</td><td>11,220</td><td>11,340</td><td>11,460</td><td>11,580</td><td>11,460</td><td>11,580</td></tr>
+<tr><td>34"</td><td>–</td><td>13,040</td><td>13,160</td><td>–</td><td>–</td><td>13,280</td><td>13,400</td></tr>
+<tr><td>36"</td><td>–</td><td>13,810</td><td>13,930</td><td>–</td><td>–</td><td>14,050</td><td>14,170</td></tr>
+<tr><td>38"</td><td>–</td><td>15,190</td><td>15,310</td><td>–</td><td>–</td><td>15,430</td><td>15,550</td></tr>
+<tr><td>40"</td><td>–</td><td>16,120</td><td>16,240</td><td>–</td><td>–</td><td>16,360</td><td>16,480</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="table-block">
+<div class="table-title-row">
+<h3 class="table-title heading">Standard Wigs: Transparent Lace</h3>
+<p class="table-note">+280 ZMW for other textures</p>
+</div>
+<div class="table-card">
+<table>
+<thead><tr><th>Length</th><th>2×6</th><th>4×4</th><th>5×5</th><th>6×6</th><th>7×7</th><th>13×4</th><th>13×6</th></tr></thead>
+<tbody>
+<tr><td>14"</td><td>2,420</td><td>2,420</td><td>2,620</td><td>2,940</td><td>3,340</td><td>2,780</td><td>3,060</td></tr>
+<tr><td>16"</td><td>2,870</td><td>2,870</td><td>3,070</td><td>3,350</td><td>3,710</td><td>3,190</td><td>3,430</td></tr>
+<tr><td>18"</td><td>3,480</td><td>3,480</td><td>3,680</td><td>3,880</td><td>4,200</td><td>3,800</td><td>3,960</td></tr>
+<tr><td>20"</td><td>4,080</td><td>4,080</td><td>4,280</td><td>4,360</td><td>4,720</td><td>4,400</td><td>4,520</td></tr>
+<tr><td>22"</td><td>4,810</td><td>4,810</td><td>5,010</td><td>5,010</td><td>5,330</td><td>5,130</td><td>5,250</td></tr>
+<tr><td>24"</td><td>5,580</td><td>5,580</td><td>5,740</td><td>6,020</td><td>6,100</td><td>5,860</td><td>5,980</td></tr>
+<tr><td>26"</td><td>6,590</td><td>6,590</td><td>6,750</td><td>6,870</td><td>6,990</td><td>6,870</td><td>6,990</td></tr>
+<tr><td>28"</td><td>8,040</td><td>8,040</td><td>8,160</td><td>8,280</td><td>8,400</td><td>8,280</td><td>8,400</td></tr>
+<tr><td>30"</td><td>9,370</td><td>9,370</td><td>9,450</td><td>9,570</td><td>9,690</td><td>9,570</td><td>9,690</td></tr>
+<tr><td>32"</td><td>10,420</td><td>10,420</td><td>10,540</td><td>10,660</td><td>10,780</td><td>10,660</td><td>10,780</td></tr>
+<tr><td>34"</td><td>–</td><td>12,240</td><td>12,360</td><td>–</td><td>–</td><td>12,480</td><td>12,600</td></tr>
+<tr><td>36"</td><td>–</td><td>13,010</td><td>13,130</td><td>–</td><td>–</td><td>13,250</td><td>13,370</td></tr>
+<tr><td>38"</td><td>–</td><td>14,390</td><td>14,510</td><td>–</td><td>–</td><td>14,630</td><td>14,750</td></tr>
+<tr><td>40"</td><td>–</td><td>15,320</td><td>15,440</td><td>–</td><td>–</td><td>15,560</td><td>15,680</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="table-block">
+<div class="table-title-row">
+<h3 class="table-title heading">Bob Wigs: HD Lace</h3>
+<p class="table-note">+280 ZMW for other textures</p>
+</div>
+<div class="table-card">
+<table>
+<thead><tr><th>Length</th><th>4×4</th><th>5×5</th><th>13×4</th><th>13×6</th></tr></thead>
+<tbody>
+<tr><td>10"</td><td>3,420</td><td>3,500</td><td>3,580</td><td>3,660</td></tr>
+<tr><td>12"</td><td>3,940</td><td>4,020</td><td>4,100</td><td>4,180</td></tr>
+<tr><td>14"</td><td>4,570</td><td>4,650</td><td>4,730</td><td>4,810</td></tr>
+<tr><td>16"</td><td>5,370</td><td>5,450</td><td>5,530</td><td>5,610</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="table-block">
+<div class="table-title-row">
+<h3 class="table-title heading">Bob Wigs: Transparent Lace</h3>
+<p class="table-note">+280 ZMW for other textures</p>
+</div>
+<div class="table-card">
+<table>
+<thead><tr><th>Length</th><th>4×4</th><th>5×5</th><th>13×4</th><th>13×6</th></tr></thead>
+<tbody>
+<tr><td>10"</td><td>2,630</td><td>2,710</td><td>2,780</td><td>2,860</td></tr>
+<tr><td>12"</td><td>3,140</td><td>3,220</td><td>3,300</td><td>3,380</td></tr>
+<tr><td>14"</td><td>3,780</td><td>3,860</td><td>3,940</td><td>4,020</td></tr>
+<tr><td>16"</td><td>4,570</td><td>4,650</td><td>4,730</td><td>4,810</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="table-block">
+<div class="table-title-row">
+<h3 class="table-title heading">Closures &amp; Frontals: HD Lace</h3>
+<p class="table-note">+80 ZMW for other textures, +160 for afro kinky and yaki</p>
+</div>
+<div class="table-card">
+<table>
+<thead><tr><th>Length</th><th>HD 2×6</th><th>HD 4×4</th><th>HD 5×5</th><th>HD 6×6</th><th>HD 7×7</th><th>HD 13×4</th><th>HD 13×6</th></tr></thead>
+<tbody>
+<tr><td>12"</td><td>–</td><td>910</td><td>1,230</td><td>1,590</td><td>–</td><td>1,710</td><td>–</td></tr>
+<tr><td>14"</td><td>950</td><td>990</td><td>1,310</td><td>1,750</td><td>2,150</td><td>1,830</td><td>2,390</td></tr>
+<tr><td>16"</td><td>1,030</td><td>1,070</td><td>1,430</td><td>1,910</td><td>2,470</td><td>2,030</td><td>2,590</td></tr>
+<tr><td>18"</td><td>1,110</td><td>1,150</td><td>1,550</td><td>2,070</td><td>2,630</td><td>2,270</td><td>2,790</td></tr>
+<tr><td>20"</td><td>1,190</td><td>1,230</td><td>1,670</td><td>2,350</td><td>2,910</td><td>2,510</td><td>3,070</td></tr>
+<tr><td>22"</td><td>1,310</td><td>1,390</td><td>1,910</td><td>2,590</td><td>3,190</td><td>2,790</td><td>3,470</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="table-block">
+<div class="table-title-row">
+<h3 class="table-title heading">Closures &amp; Frontals: Transparent Lace</h3>
+<p class="table-note">+80 ZMW for other textures, +160 for afro kinky and yaki</p>
+</div>
+<div class="table-card">
+<table>
+<thead><tr><th>Length</th><th>2×6</th><th>4×4</th><th>5×5</th><th>6×6</th><th>7×7</th><th>13×4</th><th>13×6</th><th>360</th></tr></thead>
+<tbody>
+<tr><td>12"</td><td>–</td><td>590</td><td>830</td><td>1,070</td><td>–</td><td>1,030</td><td>–</td><td>–</td></tr>
+<tr><td>14"</td><td>710</td><td>670</td><td>910</td><td>1,150</td><td>1,670</td><td>1,190</td><td>1,550</td><td>2,270</td></tr>
+<tr><td>16"</td><td>790</td><td>750</td><td>1,030</td><td>1,390</td><td>1,830</td><td>1,350</td><td>1,710</td><td>2,590</td></tr>
+<tr><td>18"</td><td>870</td><td>870</td><td>1,150</td><td>1,590</td><td>2,030</td><td>1,590</td><td>1,950</td><td>3,030</td></tr>
+<tr><td>20"</td><td>950</td><td>1,030</td><td>1,350</td><td>1,790</td><td>2,310</td><td>1,790</td><td>2,230</td><td>3,390</td></tr>
+<tr><td>22"</td><td>1,070</td><td>1,150</td><td>1,590</td><td>2,070</td><td>2,590</td><td>2,110</td><td>2,590</td><td>3,830</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="table-block">
+<div class="table-title-row">
+<h3 class="table-title heading">Bundles</h3>
+<p class="table-note">Price per bundle</p>
+</div>
+<div class="table-card">
+<table>
+<thead><tr><th>Length</th><th>Straight</th><th>Curly</th></tr></thead>
+<tbody>
+<tr><td>12"</td><td>950</td><td>1,030</td></tr>
+<tr><td>14"</td><td>1,190</td><td>1,270</td></tr>
+<tr><td>16"</td><td>1,350</td><td>1,430</td></tr>
+<tr><td>18"</td><td>1,510</td><td>1,590</td></tr>
+<tr><td>20"</td><td>1,790</td><td>1,870</td></tr>
+<tr><td>22"</td><td>2,030</td><td>2,110</td></tr>
+<tr><td>24"</td><td>2,350</td><td>2,430</td></tr>
+<tr><td>26"</td><td>2,590</td><td>2,670</td></tr>
+<tr><td>28"</td><td>2,830</td><td>2,910</td></tr>
+<tr><td>30"</td><td>3,070</td><td>3,150</td></tr>
+<tr><td>32"</td><td>3,550</td><td>3,630</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="info-list">
+<div class="info-item"><h3>50% Deposit</h3><p>Secures your order and funds sourcing. Balance due within 7 days of arrival.</p></div>
+<div class="info-item"><h3>5–7 Working Days</h3><p>After manufacturing, which takes 2 days (3 to 4 for custom colors or textures), with updates throughout.</p></div>
+<div class="info-item"><h3>7-Day Window</h3><p>Unclaimed orders after 7 days of arrival are not held.</p></div>
+<div class="info-item"><h3>Lace Options</h3><p>HD for the most natural melt, transparent for a lighter finish.</p></div>
+</div>
+</div>
+</details>
+<details class="panel" id="order">
+<summary>Order<span class="plus"></span></summary>
+<div class="panel-body">
+<p class="section-sub order-intro">Tell us what you're looking for by completing the order form below. Your total and deposit will be calculated automatically, and your order will be sent directly to us on WhatsApp for confirmation. Manufacturing takes 2 days (3 to 4 for custom colors or textures), then ordering takes 5–7 working days.</p>
+<div id="orderApp">
+<div class="card">
+<h2>Your details</h2>
+<div class="sub">So we know who to reach out to.</div>
+<label for="name">Full name</label>
+<input type="text" id="name" placeholder="e.g. Chanda Mwape">
+<div class="row2">
+<div>
+<label for="phone">Phone number</label>
+<input type="tel" id="phone" placeholder="e.g. 097X XXX XXX">
+</div>
+<div>
+<label for="location">Delivery location (as on Yango)</label>
+<input type="text" id="location" placeholder="e.g. Lusaka, Kabulonga">
+</div>
+</div>
+</div>
+<div class="card">
+<h2>Your order</h2>
+<div class="sub">Select what you'd like to order.</div>
+<label for="item">Item</label>
+<select id="item"></select>
+<label>Texture</label>
+<div class="radio-group">
+<label class="radio-pill active" data-texture="Straight/Body Wave">
+<input type="radio" name="texture" value="Straight/Body Wave" checked> Straight / Body Wave
+</label>
+<label class="radio-pill" data-texture="Other">
+<input type="radio" name="texture" value="Other"> Other texture
+</label>
+</div>
+<div id="otherTextureField" style="display:none;">
+<label for="otherTextureInput">Which texture?</label>
+<input type="text" id="otherTextureInput" placeholder="e.g. Curly, Deep Wave, Kinky, Jerry Curly">
+</div>
+<label for="qty">Quantity</label>
+<input type="text" id="qty" value="1" inputmode="numeric">
+<label for="notes">Customizations and other notes</label>
+<textarea id="notes" placeholder="Any special requests..."></textarea>
+<p class="helper-note" style="text-align:left">Please note: custom colors may differ slightly from the inspiration pictures you provide, especially images from Pinterest, TikTok and similar platforms, because lighting and filters used in photography change how colors appear.</p>
+</div>
+<div class="summary">
+<p class="summary-eyebrow">Order Summary</p>
+<div class="summary-row"><span>Unit price</span><span class="val" id="unitPrice">-</span></div>
+<div class="summary-row"><span>Quantity</span><span class="val" id="qtyDisplay">1</span></div>
+<div class="summary-row"><span>Service fee</span><span class="val" id="serviceFee">-</span></div>
+<div class="summary-row total"><span>Total</span><span class="val" id="totalPrice">-</span></div>
+<div class="deposit-highlight">
+<span class="lbl">Deposit Due Now (50% + fees)</span>
+<span class="amt" id="depositAmt">-</span>
+</div>
+<div class="summary-row"><span>Balance due when your wig is ready</span><span class="val" id="balanceAmt">-</span></div>
+<div class="pay-info">
+Send your deposit via Mobile Money to <b>0973694776</b> (MUTINTA SAKALA).
+Once sent, tap the button below. Your order and payment reference will go straight to us on WhatsApp for confirmation.
+<br><br>
+<b>Estimated ready date:</b> <span id="etaDatePreSubmit">-</span>. Customizations may take longer depending on complexity.
+<br><br>
+The remaining balance is due when your wig is ready for collection.
+</div>
+</div>
+<button class="submit-btn" id="submitBtn">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+Submit Order via WhatsApp
+</button>
+<p class="helper-note">You'll be redirected to WhatsApp with your order details pre-filled.</p>
+<div class="card receipt-card" id="receiptCard" style="display:none; margin-top:24px;">
+<div id="receiptContent">
+<div class="receipt-header">
+<p class="receipt-tag">Order Request Summary</p>
+<p class="receipt-subwarning">Please note: this is not proof of payment</p>
+</div>
+<div class="receipt-row"><span>Order Ref</span><span id="rOrderId">-</span></div>
+<div class="receipt-row"><span>Date</span><span id="rDate">-</span></div>
+<div class="receipt-divider"></div>
+<div class="receipt-row"><span>Name</span><span id="rName">-</span></div>
+<div class="receipt-row"><span>Phone</span><span id="rPhone">-</span></div>
+<div class="receipt-row"><span>Delivery</span><span id="rLocation">-</span></div>
+<div class="receipt-divider"></div>
+<div class="receipt-row"><span>Item</span><span id="rItem">-</span></div>
+<div class="receipt-row"><span>Texture</span><span id="rTexture">-</span></div>
+<div class="receipt-row"><span>Quantity</span><span id="rQty">-</span></div>
+<div class="receipt-divider"></div>
+<div class="receipt-row"><span>Total</span><span id="rTotal">-</span></div>
+<div class="receipt-row"><span>Service fee</span><span id="rFee">-</span></div>
+<div class="receipt-row receipt-total"><span>Deposit due now</span><span id="rDeposit">-</span></div>
+<div class="receipt-row"><span>Balance due on collection</span><span id="rBalance">-</span></div>
+<div class="receipt-divider"></div>
+<p class="receipt-eta"><b>Estimated ready date:</b> <span id="rEtaDate">-</span>. Customizations may take longer depending on complexity. The remaining balance is due when your wig is ready for collection.</p>
+<p class="receipt-note">This summary confirms what you've requested to order. It is <b>not proof that payment has been made or received</b>. Please send your deposit via Mobile Money to <b>0973694776</b> (MUTINTA SAKALA). Your order is only confirmed once we verify the deposit on our end.</p>
+<p class="receipt-thanks">Thank you for shopping with Sana!</p>
+</div>
+<button class="submit-btn" id="downloadReceiptBtn" style="margin-top:18px;">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg>
+Download Order Summary
+</button>
+</div>
+</div>
+<h3 class="sub-title heading alt">Prefer to talk?</h3>
+<div class="cta-buttons">
+<a class="btn btn-olive-deep" href="mailto:saanahair.co@gmail.com" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+Email Us
+</a>
+<a class="btn btn-olive-deep" href="tel:+260973694776">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+Call / SMS 0973 694 776
+</a>
+<a class="btn btn-olive-deep" href="https://instagram.com/saanahair" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1"/></svg>
+Follow on Instagram
+</a>
+</div>
+</div>
+</details>
+</div>
+</section>
+<footer>
+<p class="footer-word heading">SANA.</p>
+<p class="footer-tag">Premium, Within Reach.</p>
+<p class="footer-loc">LUSAKA, ZAMBIA</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+(function(){
+const priceList = [];
+const standardHD = {"14":[3220,3220,3420,3740,4140,3580,3860],"16":[3670,3670,3870,4150,4510,3990,4230],"18":[4280,4280,4480,4680,5000,4600,4760],"20":[4880,4880,5080,5160,5520,5200,5320],"22":[5610,5610,5810,5810,6130,5930,6050],"24":[6380,6380,6540,6820,6900,6660,6780],"26":[7390,7390,7550,7670,7790,7670,7790],"28":[8840,8840,8960,9080,9200,9080,9200],"30":[10170,10170,10250,10370,10490,10370,10490],"32":[11220,11220,11340,11460,11580,11460,11580],"34":[null,13040,13160,null,null,13280,13400],"36":[null,13810,13930,null,null,14050,14170],"38":[null,15190,15310,null,null,15430,15550],"40":[null,16120,16240,null,null,16360,16480]};
+const standardTrans = {"14":[2420,2420,2620,2940,3340,2780,3060],"16":[2870,2870,3070,3350,3710,3190,3430],"18":[3480,3480,3680,3880,4200,3800,3960],"20":[4080,4080,4280,4360,4720,4400,4520],"22":[4810,4810,5010,5010,5330,5130,5250],"24":[5580,5580,5740,6020,6100,5860,5980],"26":[6590,6590,6750,6870,6990,6870,6990],"28":[8040,8040,8160,8280,8400,8280,8400],"30":[9370,9370,9450,9570,9690,9570,9690],"32":[10420,10420,10540,10660,10780,10660,10780],"34":[null,12240,12360,null,null,12480,12600],"36":[null,13010,13130,null,null,13250,13370],"38":[null,14390,14510,null,null,14630,14750],"40":[null,15320,15440,null,null,15560,15680]};
+const bobHD = {10:[3420,3500,3580,3660],12:[3940,4020,4100,4180],14:[4570,4650,4730,4810],16:[5370,5450,5530,5610]};
+const bobTrans = {10:[2630,2710,2780,2860],12:[3140,3220,3300,3380],14:[3780,3860,3940,4020],16:[4570,4650,4730,4810]};
+const closureHD = {"12":[null,910,1230,1590,null,1710,null],"14":[950,990,1310,1750,2150,1830,2390],"16":[1030,1070,1430,1910,2470,2030,2590],"18":[1110,1150,1550,2070,2630,2270,2790],"20":[1190,1230,1670,2350,2910,2510,3070],"22":[1310,1390,1910,2590,3190,2790,3470]};
+const closureTrans = {"12":[null,590,830,1070,null,1030,null,null],"14":[710,670,910,1150,1670,1190,1550,2270],"16":[790,750,1030,1390,1830,1350,1710,2590],"18":[870,870,1150,1590,2030,1590,1950,3030],"20":[950,1030,1350,1790,2310,1790,2230,3390],"22":[1070,1150,1590,2070,2590,2110,2590,3830]};
+const bundles = {"12":[950,1030],"14":[1190,1270],"16":[1350,1430],"18":[1510,1590],"20":[1790,1870],"22":[2030,2110],"24":[2350,2430],"26":[2590,2670],"28":[2830,2910],"30":[3070,3150],"32":[3550,3630]};
+const sizes7 = ["2x6","4x4","5x5","6x6","7x7","13x4","13x6"];
+const sizesTrans = sizes7.concat(["360"]);
+const sizesBob = ["4x4","5x5","13x4","13x6"];
+const sizesBun = ["Straight","Curly"];
+const EXCHANGE_RATE = 20;
+const ALIBABA_FEE_USD = 3.50;
+const ALIBABA_FEE_ZMW = ALIBABA_FEE_USD * EXCHANGE_RATE;
+const TRANSACTION_FEE_ZMW = 50;
+function addRows(data, category, surcharge, sizes) {
+for (const length in data) {
+data[length].forEach((price, i) => {
+if (price) priceList.push({ group: category, label: `${category}: ${length} inches ${sizes[i]}`, price: price, surcharge: surcharge });
+});
+}
+}
+addRows(standardHD, "Standard HD", 280, sizes7);
+addRows(standardTrans, "Standard Transparent", 280, sizes7);
+addRows(bobHD, "Bob HD", 280, sizesBob);
+addRows(bobTrans, "Bob Transparent", 280, sizesBob);
+addRows(closureHD, "Closure/Frontal HD", 80, sizes7);
+addRows(closureTrans, "Closure/Frontal Transparent", 80, sizesTrans);
+addRows(bundles, "Bundle", 0, sizesBun);
+const itemSelect = document.getElementById('item');
+const groups = {};
+priceList.forEach((p, idx) => {
+if (!groups[p.group]) { groups[p.group] = document.createElement('optgroup'); groups[p.group].label = p.group; itemSelect.appendChild(groups[p.group]); }
+const opt = document.createElement('option');
+opt.value = idx;
+opt.textContent = p.label;
+groups[p.group].appendChild(opt);
+});
+let selectedTexture = "Straight/Body Wave";
+document.querySelectorAll('.radio-pill').forEach(pill => {
+pill.addEventListener('click', () => {
+document.querySelectorAll('.radio-pill').forEach(p => p.classList.remove('active'));
+pill.classList.add('active');
+selectedTexture = pill.dataset.texture;
+document.getElementById('otherTextureField').style.display =
+selectedTexture === "Other" ? "block" : "none";
+updateSummary();
+});
+});
+function fmt(n) {
+return n.toLocaleString('en-US', {maximumFractionDigits: 0}) + ' ZMW';
+}
+function addWorkingDays(fromDate, n) {
+const d = new Date(fromDate);
+while (n > 0) { d.setDate(d.getDate() + 1); if (d.getDay() !== 0 && d.getDay() !== 6) n--; }
+return d;
+}
+function fmtDate(d) {
+return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+function isCustom() {
+return selectedTexture === "Other" || document.getElementById('notes').value.trim() !== '';
+}
+function formatEtaDate(fromDate) {
+const lo = isCustom() ? 3 + 5 : 2 + 5;
+const hi = isCustom() ? 4 + 7 : 2 + 7;
+return fmtDate(addWorkingDays(fromDate, lo)) + ' to ' + fmtDate(addWorkingDays(fromDate, hi)) + ' (' + lo + ' to ' + hi + ' working days)';
+}
+function updateSummary() {
+const idx = itemSelect.value;
+const item = priceList[idx];
+let qty = parseInt(document.getElementById('qty').value) || 1;
+if (qty < 1) qty = 1;
+const unit = item.price + (selectedTexture === "Other" ? item.surcharge : 0);
+const total = unit * qty;
+const deposit = (total / 2) + ALIBABA_FEE_ZMW + TRANSACTION_FEE_ZMW;
+document.getElementById('unitPrice').textContent = fmt(unit);
+document.getElementById('qtyDisplay').textContent = qty;
+document.getElementById('totalPrice').textContent = fmt(total);
+document.getElementById('serviceFee').textContent = fmt(ALIBABA_FEE_ZMW + TRANSACTION_FEE_ZMW);
+document.getElementById('depositAmt').textContent = fmt(deposit);
+document.getElementById('balanceAmt').textContent = fmt(total / 2);
+document.getElementById('etaDatePreSubmit').textContent = formatEtaDate(new Date());
+}
+itemSelect.addEventListener('change', updateSummary);
+document.getElementById('qty').addEventListener('input', updateSummary);
+document.getElementById('notes').addEventListener('input', updateSummary);
+updateSummary();
+document.getElementById('submitBtn').addEventListener('click', () => {
+const name = document.getElementById('name').value.trim();
+const phone = document.getElementById('phone').value.trim();
+const location = document.getElementById('location').value.trim();
+const notes = document.getElementById('notes').value.trim();
+const idx = itemSelect.value;
+const item = priceList[idx];
+const qty = parseInt(document.getElementById('qty').value) || 1;
+const unit = item.price + (selectedTexture === "Other" ? item.surcharge : 0);
+const total = unit * qty;
+const deposit = (total / 2) + ALIBABA_FEE_ZMW + TRANSACTION_FEE_ZMW;
+const otherTextureName = document.getElementById('otherTextureInput').value.trim();
+const textureDisplay = selectedTexture === "Other"
+? `Other (${otherTextureName || "not specified"})`
+: selectedTexture;
+if (!name || !phone) {
+alert("Please enter your name and phone number before submitting.");
+return;
+}
+if (selectedTexture === "Other" && !otherTextureName) {
+alert("Please tell us which texture you'd like.");
+return;
+}
+const message =
+`New Sana Order
+Name: ${name}
+Phone: ${phone}
+Delivery: ${location || "-"}
+
+Item: ${item.label}
+Texture: ${textureDisplay}
+Quantity: ${qty}
+
+Total: ${fmt(total)}
+Service fee: ${fmt(ALIBABA_FEE_ZMW + TRANSACTION_FEE_ZMW)}
+Deposit due now: ${fmt(deposit)}
+Balance due on collection: ${fmt(total / 2)}
+
+Customizations and other notes: ${notes || "-"}
+
+Thank you for shopping with Sana!`;
+const whatsappNumber = "260973694776";
+const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+const orderId = "SN-" + Date.now().toString().slice(-6);
+const now = new Date();
+const dateStr = now.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' }) +
+", " + now.toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' });
+document.getElementById('rOrderId').textContent = orderId;
+document.getElementById('rDate').textContent = dateStr;
+document.getElementById('rEtaDate').textContent = formatEtaDate(now);
+document.getElementById('rName').textContent = name;
+document.getElementById('rPhone').textContent = phone;
+document.getElementById('rLocation').textContent = location || "-";
+document.getElementById('rItem').textContent = item.label;
+document.getElementById('rTexture').textContent = textureDisplay;
+document.getElementById('rQty').textContent = qty;
+document.getElementById('rTotal').textContent = fmt(total);
+document.getElementById('rFee').textContent = fmt(ALIBABA_FEE_ZMW + TRANSACTION_FEE_ZMW);
+document.getElementById('rDeposit').textContent = fmt(deposit);
+document.getElementById('rBalance').textContent = fmt(total / 2);
+document.getElementById('receiptCard').style.display = 'block';
+document.getElementById('receiptCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+window.open(url, "_blank");
+});
+document.getElementById('downloadReceiptBtn').addEventListener('click', () => {
+const node = document.getElementById('receiptContent');
+if (window.html2canvas) {
+document.body.classList.add('capturing');
+html2canvas(node, {
+backgroundColor: '#FFFFFF',
+scale: 2
+}).then(canvas => {
+document.body.classList.remove('capturing');
+const link = document.createElement('a');
+link.download = 'sana-order-receipt.png';
+link.href = canvas.toDataURL('image/png');
+link.click();
+}).catch(() => {
+document.body.classList.remove('capturing');
+});
+} else {
+window.print();
+}
+});
+})();
+(function(){
+function openHash(){ var el = location.hash && document.querySelector("details.panel" + location.hash); if(el) el.open = true; }
+window.addEventListener("hashchange", openHash); openHash();
+})();
+</script>
+</body>
+</html>
